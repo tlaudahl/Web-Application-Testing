@@ -13,8 +13,8 @@ test('addBalls adds up to 3 balls, then resets to 0 at 4 balls', () => {
   expect(addBalls(0)).toBe(1);
   expect(addBalls(1)).toBe(2);
   expect(addBalls(2)).toBe(3);
-  // expect(addBalls(3)).toBe(1); // - fails
-  expect(addBalls(3)).toBe(0);
+  expect(addBalls(3)).toBe(1); // - fails
+  // expect(addBalls(3)).toBe(0);
 })
 
 test('addStrike adds up to 2 strikes, then resets to 0 at 3 strikes', () => {

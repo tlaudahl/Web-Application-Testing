@@ -30,6 +30,33 @@ function App() {
   const [balls, setBalls] = useState(0);
   const [strikes, setStrikes] = useState(0);
   const [hit, setHit] = useState('');
+  const [atBat, setAtBat] = useState('Travis');
+
+  const batters = [
+    'Rueben',  
+    'Leilani',
+    'Cyrus', 
+    'Skye',
+    'Ardelle',
+    'Trudi',
+    'Janine',
+    'Walton',
+    'Corrie',
+    'Hallie',
+    'Dori',
+    'Toney',
+    'Milo',
+    'Rebbecca',
+    'Rochell',
+    'Daria',
+    'Charise',
+    'Emely',
+    'Chasity',
+    'Vannessa']
+
+    const getRandomBatter = () => {
+      return Math.floor(Math.random() * 20);
+    }
 
   const handlePitch = () => {
     const swing = Math.floor(Math.random() * 4) + 1;
@@ -40,6 +67,7 @@ function App() {
           setHit('Walk!')
           setBalls(addBalls(balls));
           setStrikes(addStrike(strikes));
+          setAtBat(batters[getRandomBatter()])
           break;
         } else {
           setBalls(addBalls(balls));
@@ -49,9 +77,10 @@ function App() {
       // Strike
       case 2:
         if (strikes === 2) {
-          setHit('Strike out!')
+          setHit('Strike! - Strike out!')
           setStrikes(addStrike(strikes));
           setBalls(0);
+          setAtBat(batters[getRandomBatter()])
           break;
         } else {
           setStrikes(addStrike(strikes));
@@ -73,6 +102,7 @@ function App() {
         setStrikes(0);
         setBalls(0);
         setHit('Nice hit!')
+        setAtBat(batters[getRandomBatter()])
         break;
       default:
         break;
@@ -81,7 +111,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>At Bat:</h1>
+      <h1>At Bat: {atBat}</h1>
       <h2>Balls: {balls}</h2>
       <h2>Strikes: {strikes}</h2>
       <h3>{hit}</h3>
